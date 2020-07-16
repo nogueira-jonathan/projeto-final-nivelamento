@@ -7,36 +7,58 @@
 </head>
 <body>
     <script>
-/* 8° 
-   Crie   um   outro   arquivo   com   o   nome   final.html,   e   crie   o   seguinte   código: 
-      
- 8.1 
-   Crie   um   sistema   que   possa   receber   5   números, OK
-      
- 8.2 
-   Esse   sistema   deve   retornar   para   o   usuário   o   menor   e   o   maior   número.  
-      
- 8.3 
-   Ele   também   deve   informar   quais   são   os   números   pares   e   ímpares. 
-      
- 8.3 
-   Ele   deve   retornar   também   se   tem   algum   numero   repetido,   se   sim,   qual   é   esse   número 
- e   quantas   vezes   está   repetido. */
 
-        var num1 = parseInt(prompt ("Digite um numero"));
-        var num2 = parseInt(prompt ("Digite outro numero"));
-        var num3 = parseInt(prompt ("Digite outro numero"));
-        var num4 = parseInt(prompt ("Digite outro numero"));
-        var num5 = parseInt(prompt ("Digite outro numero"));
 
-        var max = Math.max(num1, num2, num3, num4, num5);
-        var min = Math.min(num1, num2, num3, num4, num5);
+    var a = [];
 
-        var resultado = document.write(`dos numeros ${num1}, ${num2}, ${num3}, ${num4} e ${num5} o maior é ${max} e o menor ${min}`)
+    for(var i = 0; i < 5; i++)
+    {
+        a[i] = prompt(`Digite o ${i+1} número`); 
+    }
 
-        
-      
+    retornaNumero(a);
+    numeroRepetido(a);
+    function retornaNumero(n)
+    {
+        var maior = Math.max.apply(null,n);
+        var menor = Math.min.apply(null,n);
 
+        document.write(`O número ${maior} é o maior número<br>`);
+        document.write(`O número ${menor} é o menor número<br>`);
+
+        for(var i = 0; i < 5; i++)
+        {
+            if(n[i] % 2 == 0)
+            {
+                document.write(`${n[i]} é par<br>`);
+            }
+            else
+            {
+                document.write(`${n[i]} é impar<br>`); 
+            }
+        }
+    }
+    function numeroRepetido(n)
+    {
+        var repetido = 0;
+
+        for(var j = 0; j < 5; j++)
+        {
+            for(var w = 0; w < 5; w++)
+            {
+                if(n[j] == n[w])
+                {
+                    repetido++;
+                    
+                }
+            }
+            if(!(n[j] == n[j+1]) && !(n[j] == n[j+2]) && !(n[j] == n[j+3]) && !(n[j] == n[j+4]) && !(n[j] == n[j+5]))
+            {
+                document.write(`${n[j]} se repetiu ${repetido} vezes<br>`);
+            }
+            repetido = 0;
+        }
+    }
     </script>
 </body>
 </html>
